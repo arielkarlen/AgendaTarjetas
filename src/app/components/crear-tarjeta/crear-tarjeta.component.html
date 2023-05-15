@@ -1,31 +1,50 @@
 <div class="card">
     <div class="card-body">
         <h2 class="mb-3">Añadir tarjeta</h2>
-        <form>
+        <form [formGroup]="forms" (ngSubmit)="crearTarjeta()">
             <div class="input-group mb-3 input-group-sm">
-                <span class="input-group-text"><i class="fa-solid fa-circle-user"></i></span>
-                <input type="text" class="form-control" placeholder="Titular">
+                <span class="input-group-text">
+                    <i class="fa-solid fa-circle-user" [class.greenIcon]="this.forms.get('titular')?.valid"
+                        [class.redIcon]="this.forms.get('titular')?.invalid && this.forms.get('titular')?.touched">
+                    </i>
+                </span>
+                <input type="text" class="form-control" placeholder="Titular" formControlName="titular">
             </div>
             <div class="input-group mb-3 input-group-sm">
-                <span class="input-group-text"><i class="fa-solid fa-credit-card"></i></span>
-                <input type="text" class="form-control" placeholder="Nro de tarjeta">
+                <span class="input-group-text"><i class="fa-solid fa-credit-card"
+                        [class.greenIcon]="this.forms.get('numeroDeTarjeta')?.valid"
+                        [class.redIcon]="this.forms.get('numeroDeTarjeta')?.invalid && this.forms.get('numeroDeTarjeta')?.touched">
+                    </i>
+                </span>
+                <input type="text" class="form-control" placeholder="Nro de tarjeta" formControlName="numeroDeTarjeta"
+                    maxlength="16">
             </div>
             <div class="row">
                 <div class="col-lg-8">
                     <div class="input-group mb-3 input-group-sm">
-                        <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
-                        <input type="text" class="form-control" placeholder="MM/AA">
+                        <span class="input-group-text"><i class="fa-solid fa-calendar-days"
+                                [class.greenIcon]="this.forms.get('fechaExpiracion')?.valid"
+                                [class.redIcon]="this.forms.get('fechaExpiracion')?.invalid && this.forms.get('fechaExpiracion')?.touched">
+                            </i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="MM/AA" formControlName="fechaExpiracion"
+                            maxlength="5">
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="input-group mb-3 input-group-sm">
-                        <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
-                        <input type="password" class="form-control" placeholder="cvv">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-key" [class.greenIcon]="this.forms.get('cvv')?.valid"
+                                [class.redIcon]="this.forms.get('cvv')?.invalid && this.forms.get('cvv')?.touched">
+                            </i></span>
+                        <input type="password" class="form-control" placeholder="cvv" formControlName="cvv"
+                            maxlength="3">
                     </div>
                 </div>
             </div>
             <div class="d-grid gap-2">
-                <button class="btn btn-primary btn-sm" type="button"><i class="fa-solid fa-plus"></i> Añadir
+                <button class="btn btn-primary btn-sm" type="submit" [disabled]="forms.invalid"><i
+                        class="fa-solid fa-plus"></i> Añadir
                     tarjeta</button>
 
             </div>
