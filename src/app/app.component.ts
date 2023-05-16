@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CardsService } from './services/tarjeta.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'AgendaTarjetas';
+ 
+  cardList: any[]=[]
+
+constructor(private  _apicards: CardsService){}
+
+ngOnInit(): void {
+
+  
+  // this.listarTarjetas()
+  
+}
+
+  // listarTarjetas(){
+  //   this._apicards.getCards().subscribe(result=>{
+  //     this.cardList=result
+  //   })
+  //   console.log(this.cardList)
+  // }
+
+
 }
