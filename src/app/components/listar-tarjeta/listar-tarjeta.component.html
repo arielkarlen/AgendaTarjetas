@@ -11,7 +11,7 @@
                     <td>{{card.attributes.numeroDeTarjeta}}</td>
                     <td>{{card.attributes.cvv}}</td>
                     <td><i class="fa-solid fa-pen text-info"></i></td>
-                    <td><i class="fa-solid fa-trash text-danger"></i></td>
+                    <td><i class="fa-solid fa-trash text-danger" (click)="deleteCard(card.id)"></i></td>
                 </tr>
 
             </tbody>

@@ -10,11 +10,25 @@ export class ListarTarjetaComponent implements OnInit{
   cards:any
 
   constructor(public cardsService: CardsService){}
+  
+
+
+  fetchCards(){
+    this.cardsService.getCards().subscribe((data) => {
+      this.cards = data.data
+     
+      });
+  }
+
+  deleteCard(id:number) {
+    this.cardsService.deleteCards(id).subscribe()
+    this.cardsService.getCards().subscribe((data) => {
+      this.cards = data.data
+      });
+    this.fetchCards()
+  }
 
   ngOnInit(): void {
-    this.cardsService.getCards().subscribe((data) => {
-    this.cards = data.data
-    console.log(this.cards)
-    })
-}
+    this.fetchCards()
+  }
 }
