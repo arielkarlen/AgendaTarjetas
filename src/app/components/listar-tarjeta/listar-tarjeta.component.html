@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-body">
-        <h2>Mis tarjetas</h2>
+        <h2>Tarjetas guardadas</h2>
         <!-- <div *ngIf="cards">{{ cards }}</div> -->
         <table class="table">
 
@@ -9,7 +9,7 @@
 
                     <td>{{card.attributes.titular}}</td>
                     <td>{{card.attributes.numeroDeTarjeta}}</td>
-                    <td>{{card.attributes.cvv}}</td>
+                    <td>{{card.attributes.fechaExpiracion}}</td>
                     <td><i class="fa-solid fa-pen text-info"></i></td>
                     <td><i class="fa-solid fa-trash text-danger" (click)="deleteCard(card.id)"></i></td>
                 </tr>
