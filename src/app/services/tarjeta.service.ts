@@ -8,14 +8,14 @@ import { Observable } from 'rxjs';
 })
 export class CardsService {
 
-  constructor(private http: HttpClient) { }
 
 
-  getCards(): Observable<any> {
+  constructor(private http: HttpClient) {}
 
-   
-    
-    const URL = 'http://localhost:1337/api/cards'
-    return this.http.get(URL)
+
+  getCards():Observable<any> {
+    return this.http.get("http://localhost:1337/api/cards");
   }
+
+
 }

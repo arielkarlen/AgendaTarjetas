@@ -8,23 +8,5 @@ import { CardsService } from './services/tarjeta.service';
 })
 export class AppComponent {
  
-  cardList: any[]=[]
-
-constructor(private  _apicards: CardsService){}
-
-ngOnInit(): void {
-
-  
-  // this.listarTarjetas()
-  
-}
-
-  // listarTarjetas(){
-  //   this._apicards.getCards().subscribe(result=>{
-  //     this.cardList=result
-  //   })
-  //   console.log(this.cardList)
-  // }
-
 
 }

@@ -1,14 +1,15 @@
 <div class="card">
     <div class="card-body">
         <h2>Mis tarjetas</h2>
+        <!-- <div *ngIf="cards">{{ cards }}</div> -->
         <table class="table">
 
             <tbody>
-                <tr>
+                <tr *ngFor="let card of cards">
 
-                    <td>Ariel</td>
-                    <td>1234123412341234</td>
-                    <td>01/22</td>
+                    <td>{{card.attributes.titular}}</td>
+                    <td>{{card.attributes.numeroDeTarjeta}}</td>
+                    <td>{{card.attributes.cvv}}</td>
                     <td><i class="fa-solid fa-pen text-info"></i></td>
                     <td><i class="fa-solid fa-trash text-danger"></i></td>
                 </tr>
