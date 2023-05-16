@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TarjetaCredito } from 'src/app/models/tarjeta';
+import { CardsService } from 'src/app/services/tarjeta.service';
 
 @Component({
   selector: 'app-crear-tarjeta',
@@ -11,7 +12,9 @@ export class CrearTarjetaComponent {
 
   forms: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+ 
+  
+  constructor(private fb: FormBuilder, public cardsService: CardsService) {
 
     this.forms=this.fb.group({
 
@@ -23,16 +26,17 @@ export class CrearTarjetaComponent {
   }
 
   crearTarjeta() {
+    const card: TarjetaCredito =  {
+      data: {
+        titular: this.forms.value.titular,
+        numeroDeTarjeta: this.forms.value.numeroDeTarjeta,
+        fechaExpiracion: this.forms.value.fechaExpiracion,
+        cvv: this.forms.value.cvv,
+      }
+      
+     }
 
-
-    const Tarjeta: TarjetaCredito =  {
-      titular: this.forms.value.titular,
-      numeroDeTarjeta: this.forms.value.numeroDeTarjeta,
-      fechaExpiracion: this.forms.value.fechaExpiracion,
-      cvv: this.forms.value.cvv,
-      fechaCreacion: new Date(),
-      fechaActualizacion: new Date()
-    }
+    this.cardsService.createCard(card).subscribe()
     
   }
 

@@ -21,5 +21,8 @@ export class CardsService {
     return this.http.delete('http://localhost:1337/api/cards/'+id+'');
   }
 
+  createCard(card: any): Observable<any>{
+    return this.http.post('http://localhost:1337/api/cards/', card);
+  }
 
 }
