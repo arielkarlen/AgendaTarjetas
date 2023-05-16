@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-body">
-        <h2 class="mb-3">Añadir tarjeta</h2>
-        <form [formGroup]="forms" (ngSubmit)="crearTarjeta()">
+        <h2 class="mb-3">{{title}} tarjeta</h2>
+        <form [formGroup]="forms" (ngSubmit)="onSubmit()">
             <div class="input-group mb-3 input-group-sm">
                 <span class="input-group-text">
                     <i class="fa-solid fa-circle-user" [class.text-success]="this.forms.get('titular')?.valid"
@@ -44,7 +44,7 @@
             </div>
             <div class="d-grid gap-2">
                 <button class="btn btn-primary btn-sm" type="submit" [disabled]="forms.invalid"><i
-                        class="fa-solid fa-plus"></i> Añadir
+                        class="fa-solid fa-plus"></i> {{title}}
                     tarjeta</button>
 
             </div>
