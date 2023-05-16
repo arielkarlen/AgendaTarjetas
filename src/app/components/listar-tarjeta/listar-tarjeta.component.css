@@ -1,3 +1,7 @@
 .fa-solid:hover {
     cursor:pointer
 }
+
+td, th {
+    font-size: 14px;
+}

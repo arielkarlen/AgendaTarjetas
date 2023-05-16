@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TarjetaCredito } from 'src/app/models/tarjeta';
 import { CardsService } from 'src/app/services/tarjeta.service';
 
 @Component({
@@ -16,8 +17,7 @@ export class ListarTarjetaComponent implements OnInit{
   fetchCards(){
     this.cardsService.getCards().subscribe((data) => {
       this.cards = data.data
-     
-      });
+     });
   }
 
   deleteCard(id:number) {
@@ -30,5 +30,10 @@ export class ListarTarjetaComponent implements OnInit{
 
   ngOnInit(): void {
     this.fetchCards()
+  }
+
+
+  editCard(card: TarjetaCredito) {
+    this.cardsService.addCardEdit(card);
   }
 }

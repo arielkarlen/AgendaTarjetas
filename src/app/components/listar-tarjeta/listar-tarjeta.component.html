@@ -3,14 +3,21 @@
         <h2>Tarjetas guardadas</h2>
         <!-- <div *ngIf="cards">{{ cards }}</div> -->
         <table class="table">
-
+            <thead>
+                <tr>
+                    <th scope="col">Titular</th>
+                    <th scope="col">Nro</th>
+                    <th scope="col">Valida hasta</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
             <tbody>
                 <tr *ngFor="let card of cards">
 
                     <td>{{card.attributes.titular}}</td>
                     <td>{{card.attributes.numeroDeTarjeta}}</td>
                     <td>{{card.attributes.fechaExpiracion}}</td>
-                    <td><i class="fa-solid fa-pen text-info"></i></td>
+                    <td><i class="fa-solid fa-pen text-info" (click)="editCard(card)"></i></td>
                     <td><i class="fa-solid fa-trash text-danger" (click)="deleteCard(card.id)"></i></td>
                 </tr>
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { TarjetaCredito } from '../models/tarjeta';
 
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class CardsService {
 
-
+  private card$ = new Subject<any>();
 
   constructor(private http: HttpClient) {}
 
@@ -25,4 +26,16 @@ export class CardsService {
     return this.http.post('http://localhost:1337/api/cards/', card);
   }
 
+  addCardEdit(card: TarjetaCredito) {
+    this.card$.next(card);
+  }
+
+  getCard():Observable<TarjetaCredito> {
+    return this.card$.asObservable();
+  }
+
+  editCard(id:number, card:any): Observable<any>{
+    return this.http.put('http://localhost:1337/api/cards/'+id+'', card);
+  }
+    
 }
