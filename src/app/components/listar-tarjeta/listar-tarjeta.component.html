@@ -18,10 +18,33 @@
                     <td>{{card.attributes.numeroDeTarjeta}}</td>
                     <td>{{card.attributes.fechaExpiracion}}</td>
                     <td><i class="fa-solid fa-pen text-info" (click)="editCard(card)"></i></td>
-                    <td><i class="fa-solid fa-trash text-danger" (click)="deleteCard(card.id)"></i></td>
+                    <td><i class="fa-solid fa-trash text-danger"
+                            (click)="openPopUp(card.id, card.attributes.numeroDeTarjeta)"></i></td>
                 </tr>
 
             </tbody>
         </table>
+    </div>
+    <div class="modal " tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar tarjeta</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Esta por eliminar la tarjeta nro. {{cardNumber}}. ¿Desea continuar?</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" (click)="closePopup()">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary" (click)="deleteCard(idForDelete)">
+                        <i class="fa-solid fa-plus"></i> Elimiinar
+                        tarjeta
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
