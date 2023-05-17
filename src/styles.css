@@ -23,3 +23,7 @@ h2 {
 
 .toast-message {
     font-size: 12px;}
+
+    .modal {
+        background-color: rgba(0,0,0,0.7);
+        }

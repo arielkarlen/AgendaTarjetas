@@ -10,9 +10,25 @@ import { CardsService } from 'src/app/services/tarjeta.service';
 })
 export class ListarTarjetaComponent implements OnInit{
   cards:any
-
+  idForDelete:any
+  cardNumber:any
   constructor(public cardsService: CardsService, private toastr: ToastrService){}
   
+
+    
+  displayStyle = "none";
+  
+ 
+  openPopUp(id:number, numberCard:number) {
+    this.idForDelete=id
+    this.cardNumber=numberCard
+    console.log("Id para eliminar", id);
+    this.displayStyle = "block";
+  }
+
+  closePopup() {
+    this.displayStyle = "none";
+  }
 
 
   fetchCards(){
@@ -21,8 +37,10 @@ export class ListarTarjetaComponent implements OnInit{
      });
   }
 
-  deleteCard(id:number) {
-    this.cardsService.deleteCards(id).subscribe({
+  deleteCard(idForDelete:number) {
+
+    
+    this.cardsService.deleteCards(idForDelete).subscribe({
       next: () => {
        },
       error: (e) => {
@@ -35,6 +53,7 @@ export class ListarTarjetaComponent implements OnInit{
       this.cards = data.data
       });
     this.fetchCards()
+    this.displayStyle = "none";
   }
 
   ngOnInit(): void {
