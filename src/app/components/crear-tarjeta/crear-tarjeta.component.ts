@@ -14,9 +14,10 @@ export class CrearTarjetaComponent implements OnInit {
   forms: FormGroup;
 
   title ='Añadir '
-id = undefined
+  id = undefined
 
   cardDataForEdit:any
+  cardNumber:any
 
  ngOnInit(): void {
    this.cardsService.getCard().subscribe(res=>{
@@ -30,10 +31,29 @@ id = undefined
       numeroDeTarjeta: this.cardDataForEdit.attributes.numeroDeTarjeta,
       titular: this.cardDataForEdit.attributes.titular
     })
-    console.log(this.id);
+    
    })
  }
+ displayStyle = "none";
   
+ openPopup() {
+   this.displayStyle = "block";
+   if(this.id == undefined)
+   {
+    this.cardNumber=this.forms.value.numeroDeTarjeta
+    
+    
+   } else{
+    this.cardNumber=this.cardDataForEdit.attributes.numeroDeTarjeta
+   
+    
+    }
+     
+   
+ }
+ closePopup() {
+   this.displayStyle = "none";
+ }  
   constructor(private fb: FormBuilder, public cardsService: CardsService, private toastr: ToastrService) {
 
     this.forms=this.fb.group({
