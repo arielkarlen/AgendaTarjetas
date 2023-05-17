@@ -9,12 +9,14 @@ import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CrearTarjetaComponent,
-    ListarTarjetaComponent
+    ListarTarjetaComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

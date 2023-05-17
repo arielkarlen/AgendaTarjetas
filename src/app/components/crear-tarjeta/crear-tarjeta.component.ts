@@ -12,9 +12,9 @@ import { CardsService } from 'src/app/services/tarjeta.service';
 export class CrearTarjetaComponent implements OnInit {
 
   forms: FormGroup;
-
   title ='Añadir '
   id = undefined
+  addSucces:boolean=false
 
   cardDataForEdit:any
   cardNumber:any
@@ -98,7 +98,7 @@ export class CrearTarjetaComponent implements OnInit {
       error: (e) => {
         this.toastr.error('Error', 'No se pudo agregar la tarjeta')
        },
-      complete: () => {this.toastr.success('Por favor espere... ', 'Tarjeta agregada con exito')},
+      complete: () => {this.addSucces=true},
     })
   }
 
