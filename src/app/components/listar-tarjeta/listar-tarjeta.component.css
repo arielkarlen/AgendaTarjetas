@@ -5,3 +5,7 @@
 td, th {
     font-size: 14px;
 }
+
+table.table {
+    margin: 20px 0 0 0;
+}
