@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { TarjetaCredito } from 'src/app/models/tarjeta';
 import { CardsService } from 'src/app/services/tarjeta.service';
 
@@ -33,7 +34,7 @@ id = undefined
    })
  }
   
-  constructor(private fb: FormBuilder, public cardsService: CardsService) {
+  constructor(private fb: FormBuilder, public cardsService: CardsService, private toastr: ToastrService) {
 
     this.forms=this.fb.group({
 
@@ -54,7 +55,9 @@ id = undefined
       this.editarTarjeta(this.id)
       
     }
-    window.location.reload();
+
+    setInterval(()=>window.location.reload(), 3000)
+    
 
   }
 
@@ -69,7 +72,14 @@ id = undefined
       
      }
 
-    this.cardsService.createCard(card).subscribe()
+    this.cardsService.createCard(card).subscribe({
+      next: () => {
+       },
+      error: (e) => {
+        this.toastr.error('Error', 'No se pudo agregar la tarjeta')
+       },
+      complete: () => {this.toastr.success('Por favor espere... ', 'Tarjeta agregada con exito')},
+    })
   }
 
   editarTarjeta(id:number) {
@@ -82,7 +92,14 @@ id = undefined
       }
       
      }
-      this.cardsService.editCard(id, card).subscribe()
+      this.cardsService.editCard(id, card).subscribe({
+        next: () => {
+         },
+        error: (e) => {
+          this.toastr.error('Error', 'No se pudo editar la tarjeta', {progressBar:true})
+         },
+        complete: () => {this.toastr.success('Por favor espere... ', 'Tarjeta editada con exito', {progressBar:true})},
+      })
   }
 
 }
